@@ -10,6 +10,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final radiusBorder = BorderRadius.circular(20);
+    const sideBorder = BorderSide(color: Colors.white);
     return MaterialApp(
       theme: ThemeData(
         brightness: Brightness.dark,
@@ -27,6 +29,25 @@ class MyApp extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             animationDuration: const Duration(microseconds: 10),
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          errorBorder: OutlineInputBorder(
+            borderRadius: radiusBorder,
+            borderSide: sideBorder,
+          ),
+          labelStyle: const TextStyle(color: Colors.white),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: radiusBorder,
+            borderSide: sideBorder,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: radiusBorder,
+            borderSide: sideBorder,
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: radiusBorder,
+            borderSide: sideBorder,
           ),
         ),
       ),
