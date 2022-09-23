@@ -1,6 +1,6 @@
 # crud
 
-## CRUD em Flutter e Firebase
+## CRUD com Flutter e Firebase
 
 <div align='center'>
     <img src='assets/screenshots/1.png' width='400px' />
