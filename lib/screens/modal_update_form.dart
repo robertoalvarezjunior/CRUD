@@ -1,23 +1,48 @@
 import 'package:crud/data/db.dart';
-import 'package:crud/modals/evento.dart';
 import 'package:flutter/material.dart';
 
-class ModalForm extends StatefulWidget {
-  const ModalForm({super.key});
+class ModalUpdateForm extends StatefulWidget {
+  const ModalUpdateForm(
+      {super.key,
+      required this.id,
+      required this.titulo,
+      required this.descricao,
+      required this.data,
+      required this.horario,
+      required this.local,
+      required this.publico});
+
+  final String id;
+  final String titulo;
+  final String descricao;
+  final String data;
+  final String horario;
+  final String local;
+  final String publico;
 
   @override
-  State<ModalForm> createState() => _ModalFormState();
+  State<ModalUpdateForm> createState() => _ModalUpdateFormState();
 }
 
-class _ModalFormState extends State<ModalForm> {
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  final tituloInput = TextEditingController();
-  final descricaoInput = TextEditingController();
-  final dataInput = TextEditingController();
-  final horarioInput = TextEditingController();
-  final localInput = TextEditingController();
-  final publicoInput = TextEditingController();
+class _ModalUpdateFormState extends State<ModalUpdateForm> {
+  @override
+  void initState() {
+    tituloInput = TextEditingController(text: widget.titulo);
+    descricaoInput = TextEditingController(text: widget.descricao);
+    dataInput = TextEditingController(text: widget.data);
+    horarioInput = TextEditingController(text: widget.horario);
+    localInput = TextEditingController(text: widget.local);
+    publicoInput = TextEditingController(text: widget.publico);
+    super.initState();
+  }
 
+  late final dynamic tituloInput;
+  late final dynamic descricaoInput;
+  late final dynamic dataInput;
+  late final dynamic horarioInput;
+  late final dynamic localInput;
+  late final dynamic publicoInput;
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -60,14 +85,16 @@ class _ModalFormState extends State<ModalForm> {
                   final local = localInput.text;
                   final publico = publicoInput.text;
 
-                  creatEvent(
-                    titulo: titulo,
-                    data: data,
-                    descricao: descricao,
-                    horario: horario,
-                    local: local,
-                    publico: publico,
-                  );
+                  final docEvento = DB.db.collection('evento').doc(widget.id);
+                  docEvento.update({
+                    'titulo': titulo,
+                    'descrição': descricao,
+                    'data': data,
+                    'horario': horario,
+                    'local': local,
+                    'publico': publico,
+                  });
+
                   Navigator.of(context).pop();
                 }
               },
@@ -82,6 +109,7 @@ class _ModalFormState extends State<ModalForm> {
   TextFormField txtFormField(
       TextEditingController controller, String label, txtInputType) {
     return TextFormField(
+      textCapitalization: TextCapitalization.sentences,
       controller: controller,
       cursorColor: Colors.white,
       keyboardType: txtInputType,
@@ -93,29 +121,5 @@ class _ModalFormState extends State<ModalForm> {
         return null;
       },
     );
-  }
-
-  Future creatEvent({
-    required titulo,
-    required descricao,
-    required data,
-    required horario,
-    required local,
-    required publico,
-  }) async {
-    final docEvent = DB.db.collection('evento').doc();
-
-    final event = Evento(
-        id: docEvent.id,
-        titulo: titulo,
-        descricao: descricao,
-        data: data,
-        horario: horario,
-        local: local,
-        publico: publico);
-
-    final json = event.toJson();
-
-    await docEvent.set(json);
   }
 }

@@ -23,9 +23,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -44,39 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyB-rZS_U6Sph6IpnIHWYHRcwyQcbY_NRjo',
-    appId: '1:453008319062:web:31e51ce0b057f4d27dd1f7',
-    messagingSenderId: '453008319062',
-    projectId: 'crud-48da6',
-    authDomain: 'crud-48da6.firebaseapp.com',
-    storageBucket: 'crud-48da6.appspot.com',
+    apiKey: 'AIzaSyA__51SUxwj1YCXwQi5_chv7c4ReJgsFbA',
+    appId: '1:711564089430:web:beda14d5dbefcfb6d6c3f7',
+    messagingSenderId: '711564089430',
+    projectId: 'crud-b8323',
+    authDomain: 'crud-b8323.firebaseapp.com',
+    storageBucket: 'crud-b8323.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC5Lhn4PmsQT7cPS7d2c44Ie_yQmqAnYGg',
-    appId: '1:453008319062:android:1902538dd77edf8c7dd1f7',
-    messagingSenderId: '453008319062',
-    projectId: 'crud-48da6',
-    storageBucket: 'crud-48da6.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDB_dfHtWsbkRLW9XImZXXrxssHqyRppaA',
-    appId: '1:453008319062:ios:07d579ab435575f67dd1f7',
-    messagingSenderId: '453008319062',
-    projectId: 'crud-48da6',
-    storageBucket: 'crud-48da6.appspot.com',
-    iosClientId: '453008319062-n9h5b50tu1uofhvm92mvd2chduu6f1qp.apps.googleusercontent.com',
-    iosBundleId: 'com.example.crud',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDB_dfHtWsbkRLW9XImZXXrxssHqyRppaA',
-    appId: '1:453008319062:ios:07d579ab435575f67dd1f7',
-    messagingSenderId: '453008319062',
-    projectId: 'crud-48da6',
-    storageBucket: 'crud-48da6.appspot.com',
-    iosClientId: '453008319062-n9h5b50tu1uofhvm92mvd2chduu6f1qp.apps.googleusercontent.com',
-    iosBundleId: 'com.example.crud',
+    apiKey: 'AIzaSyDWicamOZ1fNXYVQBsWjzjEHJ1nHu_adEo',
+    appId: '1:711564089430:android:8a2a95dd0b470e30d6c3f7',
+    messagingSenderId: '711564089430',
+    projectId: 'crud-b8323',
+    storageBucket: 'crud-b8323.appspot.com',
   );
 }

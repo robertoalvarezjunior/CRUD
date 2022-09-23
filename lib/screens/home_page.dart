@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:crud/modals/evento.dart';
 import 'package:crud/screens/consultar_page.dart';
 import 'package:crud/screens/modal_form.dart';
@@ -13,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Evento> list = [];
+  final List<Evento> evento = [];
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => ConsultarPage(
-                      lista: list,
+                      lista: evento,
                     ),
                   ),
                 );
@@ -58,27 +56,8 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder: (context) => SingleChildScrollView(
         padding: MediaQuery.of(context).viewInsets,
-        child: ModalForm(
-          onSubmit: _addList,
-        ),
+        child: const ModalForm(),
       ),
     );
-  }
-
-  _addList(String titulo, String descricao, String data, String horario,
-      String local, String publico) {
-    setState(() {
-      final newList = Evento(
-        id: Random().nextDouble().toString(),
-        titulo: titulo,
-        descricao: descricao,
-        data: data,
-        horario: horario,
-        local: local,
-        publico: publico,
-      );
-      list.add(newList);
-    });
-    Navigator.of(context).pop();
   }
 }

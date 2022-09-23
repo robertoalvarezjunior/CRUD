@@ -17,4 +17,24 @@ class Evento {
     required this.local,
     required this.publico,
   });
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'titulo': titulo,
+        'descrição': descricao,
+        'data': data,
+        'horario': horario,
+        'local': local,
+        'publico': publico,
+      };
+
+  static Evento fromJson(Map<String, dynamic> json) => Evento(
+        id: json['id'],
+        titulo: json['titulo'],
+        descricao: json['descrição'],
+        data: json['data'],
+        horario: json['horario'],
+        local: json['local'],
+        publico: json['publico'],
+      );
 }
