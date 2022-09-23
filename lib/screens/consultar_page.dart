@@ -1,9 +1,9 @@
-import 'package:crud/modals/lista.dart';
+import 'package:crud/modals/evento.dart';
 import 'package:flutter/material.dart';
 
 class ConsultarPage extends StatefulWidget {
   const ConsultarPage({super.key, required this.lista});
-  final List<Lista> lista;
+  final List<Evento> lista;
 
   @override
   State<ConsultarPage> createState() => _ConsultarPageState();

@@ -1,4 +1,4 @@
-class Lista {
+class Evento {
   //Título, descrição, data do evento, horário, local, público
   late String id;
   late String titulo;
@@ -8,7 +8,7 @@ class Lista {
   late String local;
   late String publico;
 
-  Lista({
+  Evento({
     required this.id,
     required this.titulo,
     required this.descricao,

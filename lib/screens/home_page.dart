@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:crud/modals/lista.dart';
+import 'package:crud/modals/evento.dart';
 import 'package:crud/screens/consultar_page.dart';
 import 'package:crud/screens/modal_form.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Lista> list = [];
+  final List<Evento> list = [];
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
   _addList(String titulo, String descricao, String data, String horario,
       String local, String publico) {
     setState(() {
-      final newList = Lista(
+      final newList = Evento(
         id: Random().nextDouble().toString(),
         titulo: titulo,
         descricao: descricao,
