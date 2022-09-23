@@ -131,6 +131,8 @@ class _ConsultarPageState extends State<ConsultarPage> {
           (event) => event.docs.map((e) => Evento.fromJson(e.data())).toList());
 
   _edit({id, titulo, descricao, data, horario, publico, local}) {
+    Navigator.of(context).pop();
+
     showModalBottomSheet(
       isScrollControlled: true,
       constraints:
@@ -155,5 +157,7 @@ class _ConsultarPageState extends State<ConsultarPage> {
     final docEvento = DB.db.collection('evento').doc(id);
 
     docEvento.delete();
+
+    Navigator.of(context).pop();
   }
 }
