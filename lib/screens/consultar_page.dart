@@ -48,7 +48,49 @@ class _ConsultarPageState extends State<ConsultarPage> {
           padding: const EdgeInsets.only(top: 10, bottom: 10),
           child: ListTile(
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text(
+                      'O que deseja fazer?',
+                      textAlign: TextAlign.center,
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          _edit(
+                            id: e.id,
+                            titulo: e.titulo,
+                            descricao: e.descricao,
+                            data: e.data,
+                            horario: e.horario,
+                            local: e.local,
+                            publico: e.publico,
+                          );
+                        },
+                        child: const Text(
+                          'Editar',
+                          style: TextStyle(
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          _delete(e.id);
+                        },
+                        child: const Text(
+                          'Excluir',
+                          style: TextStyle(
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
               icon: const Icon(Icons.more_vert),
             ),
             title: Center(
